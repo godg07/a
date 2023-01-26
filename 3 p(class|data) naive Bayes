@@ -1,5 +1,5 @@
 def drug_user(n,user):
-m=1-n
-not_drug_user=1-user
-return(n*user)/(n*user+m*not_drug_user)
+   m=1-n
+   not_drug_user=1-user
+   return(n*user)/(n*user+m*not_drug_user)
 print(drug_user(0.99,0.005))
