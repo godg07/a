@@ -14,7 +14,7 @@ y_predicted=km.fit_predict(df[['Age','Income[$]']])
 print(y_predicted)
 
 df['cluster']=y_predicted
-print(df.head)
+print(df)
 
 df1=df[df.cluster==0]
 df2=df[df.cluster==1]
