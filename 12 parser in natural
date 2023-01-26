@@ -7,3 +7,4 @@ print(nltk.sent_tokenize(text))
 from nltk import pos_tag
 tokens=nltk.word_tokenize(text)
 pos_list=pos_tag(tokens)
+print(pos_list)
