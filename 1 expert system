@@ -1,0 +1,43 @@
+import aiml
+import time
+
+time.clock=time.time
+Kernel=aiml.Kernel()
+
+Kernel.learn("file name")
+Kernal.respond("LOAD AIML B")
+while true:
+    tt=input("Human:")
+    response=Kernel.respond(tt)
+    print("Bot:"+response)
+    
+    
+    # std.xml
+    
+    <aiml>
+    <category>
+    <pattern> LOAD AIML B</pattern>
+    <template>
+    <learn>hi.aiml</learn>
+    </template>
+    </category>
+    </aiml>
+    
+    
+    hi.aiml
+    
+    <aiml version="1.0.1",encoding="UTF-8">
+    <category>
+    <pattern>HI</pattern>
+    <template>hello</tempate>
+    </category>
+    </aiml>
+    
+    
+    
+    
+    
+    
+    
+    
+    
