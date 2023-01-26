@@ -1,0 +1,41 @@
+go:-
+ hypothesis(Disease),
+ write("you have :"),
+ write(Disease),
+ nl,
+ undo.
+ 
+ hypothesis(cold):-cold.
+ hypothesis(flu):-flu.
+ 
+ cold:-
+ verify(headache),
+ verify(nose_block),
+ nl.
+ 
+ flu:-
+ verify(fever),
+ verify(nose_block),
+ nl.
+ 
+ ask(Question):-
+ write('symptoms:'),
+ write(Question),
+ write('?'),
+ read(Response),
+ nl,
+ ((Response==yes;Response==y)->
+ assert(yes(Question));
+ assert(no(Question)),fail).
+ 
+ :- dynamic yes/1,no/1.
+    verify(s):-
+    (yes(s)->
+    true;
+    (no(s)->
+    fail;
+    ask(s))).
+    
+    undo:-retrat(yes(_)),fail.
+    undo:-retract(no(_)),fail.
+    undo.
