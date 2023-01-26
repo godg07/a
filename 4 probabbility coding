@@ -1,0 +1,8 @@
+stats=0.15
+with_=0.60
+without=0.40
+
+both=stats*with_
+given=both+((1-stats)*without)
+final=both/given
+print(final)
