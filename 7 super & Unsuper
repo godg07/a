@@ -1,0 +1,76 @@
+#Import neessary modules
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+import numpy as np
+import matplotlib.pyplot as plt
+
+irisData = load_iris()
+
+#Create feature and target arrays
+x = irisData.data
+y = irisData.target
+
+#Split into training and test set
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state=109)
+
+neighbors = np.arange(1, 9)
+train_accuracy = np.empty(len(neighbors))
+test_accuracy = np.empty(len(neighbors))
+
+#Loop over K values
+for i, k in enumerate(neighbors):
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(x_train, y_train)
+
+# Compute training and test data accuracy
+train_accuracy[i] = knn.score(x_train, y_train)
+test_accuracy[i] = knn.score(x_test, y_test)
+
+#Generate plot
+plt.plot(neighbors, test_accuracy, label = 'Testing dataset Accuracy')
+plt.plot(neighbors, train_accuracy, label = 'Training dataset Accuracy')
+
+plt.legend()
+plt.xlabel('n_neighbors')
+plt.ylabel('Accuracy')
+plt.show()
+
+
+
+
+# unsupervised learning
+
+
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+x = [4, 5, 10, 4, 3, 11, 14, 6, 10, 12]
+y = [21, 19, 24, 17, 16, 25, 24, 22, 21, 21]
+data = list(zip(x , y))
+print(data)
+inertias = []
+
+for i in range(1,11):
+    kmeans = KMeans(n_clusters=i)
+    kmeans.fit(data)
+    inertias.append(kmeans.inertia_)
+
+plt.plot(range(1,11), inertias, marker='o')
+plt.title('Elbow method')
+plt.xlabel('Number of clusters')
+plt.ylabel('Inertia')
+plt.show()
+kmeans = KMeans(n_cluster=2)
+kmeans.fit(data)
+
+plt.scatter(x, y, c=kmeans.labels_)
+plt.show()
+
+
+
+
+
+
+
+
+
